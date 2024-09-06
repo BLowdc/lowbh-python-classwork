@@ -1,2 +1,1 @@
-# lowbh-python-classwork
-Python Classwork
+Python classwork
