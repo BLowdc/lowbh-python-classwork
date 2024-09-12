@@ -1,5 +1,5 @@
-name = input()
+name = input("Enter name")
 if name == 'Hazel':
-    print("Helloe Hazel")
+    print("Hello Hazel")
 else:
     print("We haven't met")
