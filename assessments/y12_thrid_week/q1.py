@@ -6,6 +6,8 @@ def sum_even(n):
     else:
         for i in range(0,n,2):
             t += i
+    #endif
     return t
+#endprocedure
 
 print(sum_even(int(input())))
