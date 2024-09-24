@@ -10,6 +10,6 @@ def grade(per):
     elif per < 60:
         return 'F'
     #endif
-#endprocedure
+#endfunction
 
 print(grade(int(input())))

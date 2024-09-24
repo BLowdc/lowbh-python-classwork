@@ -8,6 +8,6 @@ def sum_even(n):
             t += i
     #endif
     return t
-#endprocedure
+#endfunction
 
 print(sum_even(int(input())))

@@ -4,7 +4,7 @@ def max_elem(ls):
         a.append(max(row))
     #next row
     return a
-#endprocedure
+#endfunction
 
 n = int(input("rows: ")) 
 a = [[int(j) for j in input("elems: ").split()] for i in range(n)]
