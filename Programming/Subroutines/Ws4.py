@@ -1,11 +1,11 @@
 def parkACar(carpark)->list:
     parked = False
-    num = input("Enter registration number")
+    num = input("Enter registration number: ")
     while not parked:
         r = int(input("Enter row: "))
         c = int(input("Enter column: "))
-        if carpark[r][c] == 'empty':
-            carpark[r][c] == num
+        if carpark[r-1][c-1] == 'Empty':
+            carpark[r-1][c-1] = num
             parked = True
         else:
             print("Space taken")
@@ -14,11 +14,11 @@ def parkACar(carpark)->list:
 #end function
 
 def removeACar(carpark)->list:
-    num = input("Enter registration number")
+    num = input("Enter registration number: ")
     for row in carpark:
         for elem in row:
             if elem == num:
-                elem == "Empty"
+                elem = "Empty"
             #end if
         #next elem
     #next row
@@ -26,8 +26,14 @@ def removeACar(carpark)->list:
 #end function
 
 def displayCarParkGrid(carpark)->None:
-    print(carpark)
+    for row in carpark:
+        print(' '.join(str(elem) for elem in row))
 #end procedure
+
+carpark = [['Empty']*10 for s in range(6)]
+parkACar(carpark)
+removeACar(carpark)
+displayCarParkGrid(carpark)
 
 
         
