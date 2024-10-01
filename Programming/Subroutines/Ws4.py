@@ -35,7 +35,13 @@ def removeACar(carpark)->list:
 
 def displayCarParkGrid(carpark)->None:
     for row in carpark:
-        print(' '.join([str(elem) for elem in row]))
+        print(' '.join(str(elem) for elem in row))
 #end procedure
 
-carpark = [['Empty' for i in range(6)] for j in range(10)]
+carpark = [['Empty']*10 for s in range(6)]
+parkACar(carpark)
+removeACar(carpark)
+displayCarParkGrid(carpark)
+
+
+        
