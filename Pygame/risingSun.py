@@ -34,6 +34,7 @@ while not done:
     screen.fill(BLACK)
 
     pygame.draw.circle(screen,YELLOW,[x,y],50)
+    pygame.draw.rect(screen,GREEN,[0,350,1000,150])
     pygame.display.flip()
-    clock.tick(0)
+    clock.tick(120)
 pygame.quit()

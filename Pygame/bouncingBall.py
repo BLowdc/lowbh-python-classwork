@@ -2,39 +2,38 @@ import os
 import sys, pygame
 pygame.init()
 
-size = width, height = 320, 240
-speed = [1, 1]
+size = width, height = 500,500
+x = 25
+y = 475
 black = 0, 0, 0
-gravity = 0.1
+red = 255, 0, 0
+gravity = 10
+jump = False
 
+clock = pygame.time.Clock()
 screen = pygame.display.set_mode(size)
-
-image_file = os.path.expanduser("~/pybin/pygame_examples/data/ball.png")
-ball = pygame.image.load(image_file)
-ballrect = ball.get_rect()
-
-def clip(val, minval, maxval):
-    return min(max(val, minval), maxval)
 
 while 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
 
-    speed[1] += gravity
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_w:
+            jump = True
+    
+    if y == 475:
+        gravity = 10
 
-    ballrect = ballrect.move(speed)
-    if ballrect.left < 0 or ballrect.right > width:
-        speed[0] = -speed[0]
-    if ballrect.top < 0 or ballrect.bottom > height:
-        speed[1] = -speed[1]
-
-    # clip the position to remain in the window
-
-    ballrect.left = clip(ballrect.left, 0, width)
-    ballrect.right = clip(ballrect.right, 0, width)        
-    ballrect.top = clip(ballrect.top, 0, height)
-    ballrect.bottom = clip(ballrect.bottom, 0, height) 
-
+    while (jump == True):
+        y -= gravity
+        while gravity > -10:
+            gravity -= 0.2
+        if y < 475:
+            jump = False
+        
+    print(jump)
+        
     screen.fill(black)
-    screen.blit(ball, ballrect)
+    pygame.draw.circle(screen,red,[x,y],20)
     pygame.display.flip()
+    clock.tick(120)

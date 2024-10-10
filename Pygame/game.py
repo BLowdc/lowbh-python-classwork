@@ -27,7 +27,7 @@ pygame.key.set_repeat(50,50)
 
 left = False
 right = False
-jump = False
+up = False
 
 while not done:
     for event in pygame.event.get():
@@ -35,36 +35,29 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
 
-    def j(y):
-        y -= speed
-        while y != 450:
-            if speed <= 10 or speed >= -10:
-                speed -= 0.1
-        speed = abs(speed)
-        return y
 
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_a:
             left = True
         if event.key == pygame.K_d:
             right = True
-        if event.key == pygame.K_SPACE:
-            jump = True
+        if event.key == pygame.K_w:
+            up = True
 
     if event.type == pygame.KEYUP:
         if event.key == pygame.K_a:
             left = False
         if event.key == pygame.K_d:
             right = False
-        if event.key == pygame.K_SPACE:
-            jump = False
+        if event.key == pygame.K_w:
+            up = False
         
     if (left == True):
         x -= 5
     if (right == True):
         x += 5
-    if (jump == True):
-       y = j(y)
+    if (up == True):
+        y -= 5
 
     #keeps square in bounds
     if x < 0:
