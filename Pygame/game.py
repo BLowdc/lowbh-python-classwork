@@ -52,6 +52,8 @@ while not done:
         if event.key == pygame.K_w:
             up = False
         
+    print(up, left, right)
+        
     if (left == True):
         x -= 5
     if (right == True):

@@ -21,7 +21,6 @@ pygame.key.set_repeat(50,50)
 
 while not done:
     for event in pygame.event.get():
-        #key inputs
         if event.type == pygame.QUIT:
             done = True
     
@@ -30,6 +29,8 @@ while not done:
         x = 1050
 
     y = 0.0005 * ((x-500) ** 2) + 100
+
+    print(x,y)
 
     screen.fill(BLACK)
 
