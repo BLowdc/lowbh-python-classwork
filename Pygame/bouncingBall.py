@@ -58,7 +58,6 @@ while not done:
     elif x > 475:
         x = 475
 
-    print(jump,left,right)
         
     screen.fill(black)
     pygame.draw.circle(screen,red,[x,y],20)
