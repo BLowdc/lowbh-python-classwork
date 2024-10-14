@@ -9,15 +9,18 @@ BLUE = (0, 0, 255)
 JDC = (100, 22, 200)
 
 x, xV = 500, 3
-x, xV = 0, 3
 y, yV = 250, 3
 
 Ly = 200
 Ry = 200
 
+ScoreLeft, ScoreRight = 0, 0
+
 size = (1000,500)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Bouncing Square")
+sans_font = pygame.font.SysFont('Comic Sans MS', 30)
+text_surface = sans_font.render("Score:    -",1, BLACK)
 
 done = False
 clock = pygame.time.Clock()
@@ -72,11 +75,16 @@ while not done:
         Ry = 390
 
     #out of bounds
-    if x > 1050 or x < -50:
+    if x >= 1050:
         x = 485
-        pygame.time.wait(1000)
+        ScoreLeft += 1
+        pygame.time.delay(1000)
 
-    #squarebouncing
+    if x <= -50:
+        x = 485
+        ScoreRight += 1
+        pygame.time.delay(1000)
+
     #bouncing square
     x += xV
     y += yV
@@ -91,6 +99,11 @@ while not done:
     pygame.draw.rect(screen,RED,[x,y,30,30])
     pygame.draw.rect(screen,BLACK,[5,Ly,10,100])
     pygame.draw.rect(screen,BLACK,[985,Ry,10,100])
+    screen.blit(text_surface, (0,0))
+    scoreL = sans_font.render(str(ScoreLeft),1,RED)
+    scoreR = sans_font.render(str(ScoreRight),1,BLUE)
+    screen.blit(scoreL, (100,0))
+    screen.blit(scoreR, (150,0))
     pygame.display.flip()
     clock.tick(120)
 pygame.quit()
