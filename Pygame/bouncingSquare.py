@@ -8,7 +8,7 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 JDC = (100, 22, 200)
 
-x, xV = 500, 3
+x, xV = 0, 3
 y, yV = 250, 3
 
 Ly = 200
@@ -51,7 +51,6 @@ while not done:
         if event.key == pygame.K_DOWN:
             RDown = False
 
-    #moving platforms
     if (LUp == True):
         Ly -= 5
     if (LDown == True):
@@ -61,7 +60,6 @@ while not done:
     if (RDown == True):
         Ry += 5
 
-    #platform borders
     if Ly < 5:
         Ly = 5
     elif Ly > 390:
@@ -71,17 +69,10 @@ while not done:
     elif Ry > 390:
         Ry = 390
 
-    #out of bounds
-    if x > 1050 or x < -50:
-        x = 485
-        pygame.time.wait(1000)
-
-    #squarebouncing
+    #bouncing square
     x += xV
     y += yV
-    if x >= 955 and (Ry < (y + 15) < (Ry + 100)):
-        xV *= -1
-    if x <= 15 and (Ly < (y + 15) < (Ly + 100)):
+    if x >= 970 or x <= 0:
         xV *= -1
     if y >= 470 or y <= 0:
         yV *= -1
