@@ -7,7 +7,7 @@ if n == 0:
 elif len(strs) == 1:
     print(strs[0])
 else:
-    for s in range(n):
+    for s in range(1,len(strs)):
         letter = strs[0][index]
         if strs[s][index] != letter:
             break

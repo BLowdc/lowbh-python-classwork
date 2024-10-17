@@ -21,7 +21,7 @@ ScoreLeft, ScoreRight = 0, 0
 
 size = (1000,500)
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Bouncing Square")
+pygame.display.set_caption("Pong")
 sans_font = pygame.font.SysFont('Comic Sans MS', 30)
 text_surface = sans_font.render("Score:    -",1, BLACK)
 
