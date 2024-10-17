@@ -1,4 +1,5 @@
 import pygame
+import random
 pygame.init()
 
 BLACK = (0, 0, 0)
@@ -6,10 +7,12 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
-JDC = (100, 22, 200)
+JDC = (135,206,235)
 
-x, xV = 500, 3
-y, yV = 250, 3
+x = 500
+y = 250
+xV = 3
+yV = 3
 
 Ly = 200
 Ry = 200
@@ -89,13 +92,18 @@ while not done:
     x += xV
     y += yV
     if x >= 955 and (Ry < (y + 15) < (Ry + 100)):
+        xV = random.random() * 2 + 3
+        xV = round(xV,3)
         xV *= -1
     if x <= 15 and (Ly < (y + 15) < (Ly + 100)):
-        xV *= -1
+        xV = random.random() * 2 + 3
+        xV = round(xV,3)
     if y >= 470 or y <= 0:
         yV *= -1
 
-    screen.fill(WHITE)
+    print(xV)
+
+    screen.fill(JDC)
     pygame.draw.rect(screen,RED,[x,y,30,30])
     pygame.draw.rect(screen,BLACK,[5,Ly,10,100])
     pygame.draw.rect(screen,BLACK,[985,Ry,10,100])
