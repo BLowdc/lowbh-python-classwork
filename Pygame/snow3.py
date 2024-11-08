@@ -16,6 +16,8 @@ class Flake:
         self.y = y_pos
         self.vel = velocity
         self.size = size
+    #end fields
+#end record
 
 #default    
 size = (800,800)
@@ -26,7 +28,7 @@ clock = pygame.time.Clock()
 pygame.key.set_repeat(50,50)
 
 # sway = 0.05
-rows = 200
+rows = 250
 arr = [None for j in range(rows)]
 for row in range(rows):
         velocity = round(random.random(),2)
@@ -63,10 +65,7 @@ while not done:
     screen.fill(BLACK)
     #drawing
     for f in range(rows):
-        pygame.draw.rect(screen,WHITE,[arr[f].x,
-                                       arr[f].y,
-                                       arr[f].size,
-                                       arr[f].size])
+        pygame.draw.circle(screen,WHITE,[arr[f].x, arr[f].y], arr[f].size,)
     pygame.display.flip()
     clock.tick(120)
 pygame.quit()
