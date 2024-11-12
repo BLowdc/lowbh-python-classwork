@@ -29,7 +29,7 @@ class Flake:
     def draw(self):
         pygame.draw.circle(screen,WHITE,[self.x, self.y], self.size)
     #end method
-#end record
+#end class
 
 #default    
 size = (800,800)
