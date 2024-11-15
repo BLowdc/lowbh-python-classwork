@@ -31,6 +31,8 @@ myDog2 = Dog("Jeff","Unknown")
 dogs.append(myDog1)
 dogs.append(myDog2)
 
+print("Dogs: ", dogs)
+
 for dog in dogs:
     if dog.colour == "Unknown":
         colour = input(f"Enter colour for {dog.name}: ")

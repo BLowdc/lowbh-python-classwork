@@ -1,3 +1,4 @@
+import random
 class Animal:
     def __init__(self, myType, myName, mycolour) -> None:
         self.type = myType
@@ -19,16 +20,43 @@ class Animal:
 #end class
 
 class Dog(Animal):
-    pass
+    def makeNoise(self):
+        print("Woof")
+    #end public procedure
 #end class
 
-myAnimal = Animal("Unknown","Bart","Black")
-print(f"Name: {myAnimal.name}, Type: {myAnimal.type}, Colour: {myAnimal.colour}")
-myAnimal.makeNoise()
+class Cat(Animal):
+    def makeNoise(self):
+        print("Meow")
+    #end public procedure
+#end class
 
-myDog = Dog("Schnauzer","Dordor","Grey")
-print(f"Name: {myDog.name}, Type: {myDog.type}, Colour: {myDog.colour}")
+# myDog = Dog("Schnauzer","Dordor","Grey")
+# print(f"Name: {myDog.name}, Type: {myDog.type}, Colour: {myDog.colour}")
+# myDog.makeNoise()
 
-print("End")
+# myCat = Cat("Universe","Annihilator","Black")
+# print(f"Name: {myCat.name}, Type: {myCat.type}, Colour: {myCat.colour}")
+# myCat.makeNoise()
+
+pets = [None for i in range(10)]
+
+for i in range(10):
+    choice = random.randint(0,1)
+    match choice:
+        case 0:
+            dog = Dog("DogName","DogType","DogColour")
+            pets[i] = dog
+        case 1:
+            cat = Cat("CatName","CatType","CatColour")
+            pets[i] = cat
+        #end case
+    #end match
+#next i
+
+for pet in pets:
+    print(f"Name: {pet.name}, Type: {pet.type}, Colour: {pet.colour}")
+    pet.makeNoise()
+#next pet
     
 
