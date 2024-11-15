@@ -9,6 +9,10 @@ RED = (255, 0, 0)
 
 pygame.init()
 
+# Set the width and height of the screen [width, height]
+size = (700, 500)
+screen = pygame.display.set_mode(size)
+
 class Bullet:
     def __init__(self, x, y, colour) -> None:
         self.x = x
@@ -19,6 +23,7 @@ class Bullet:
     def __repr__(self) -> str:
         return f'x:{self.x},y:{self.y},colour:{self.colour}'
     #end function
+#end class
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, colour, height, width) -> None:
@@ -28,9 +33,20 @@ class Block(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
     #end constructor
 
-# Set the width and height of the screen [width, height]
-size = (700, 500)
-screen = pygame.display.set_mode(size)
+    def update(self):
+        # Move the block down one pixel
+        self.rect.y += 1
+        if self.rect.y > size[1]:
+            self.reset_pos()
+        #end if
+    #end method
+
+    def reset_pos(self):
+        self.rect.y = random.randrange(-300, -20)
+        self.rect.x = random.randrange(0, size[0])
+    #end method
+#end class
+
 
 pygame.display.set_caption("Space Invaders")
 score = 0
@@ -66,20 +82,18 @@ while not done:
 
     # --- Game logic should go here
     pos = pygame.mouse.get_pos()
+    
+    block_list.update()
  
     player.rect.x = pos[0]
     player.rect.y = pos[1]
 
-    blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
+    blocks_hit_list = pygame.sprite.spritecollide(player, block_list, False)
 
     for block in blocks_hit_list:
         score += 1
+        block.reset_pos()
     #next block
-
-    # --- Screen-clearing code goes here
-
-    # Here, we clear the screen to white. Don't put other drawing commands
-    # above this, or they will be erased with this command.
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
@@ -89,10 +103,6 @@ while not done:
     all_sprite_list.draw(screen)
     blockDestroyed = sans_font.render(str(score),1,RED)
     screen.blit(blockDestroyed, (335,0))
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_w:
-            pygame.draw.rect(screen,GREEN,[player.rect.x,player.rect.y,5,5])
-
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
