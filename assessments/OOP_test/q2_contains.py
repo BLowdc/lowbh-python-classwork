@@ -9,4 +9,4 @@ def contains(s1,s2):
     
     return False
 
-print(contains('fox','foxhound'))
+print(contains('this i s true','Did i say this is true     '))
