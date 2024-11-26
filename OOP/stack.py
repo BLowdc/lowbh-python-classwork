@@ -37,8 +37,14 @@ class stack():
         return self.pointer == -1
     #endfunction
 
-    def getList(self) -> list:
-        return self.stack
+    def printStack(self) -> list:
+        print("Stack:", end=' ')
+        for elem in self.stack:
+            if elem:
+                print(elem, end=' ')
+            #endif'
+        #next elem
+        print(' ')
 #end class
 
 myStack = stack(5)
@@ -47,8 +53,9 @@ myStack.push('apple')
 myStack.push('banana')
 myStack.push('oranges')
 myStack.push('strawberry')
-myStack.push('mango')
 myStack.push('raspberry')
+myStack.push('mango')
+myStack.printStack()
 print(myStack.peek())
 print(myStack.pop())
 print(myStack.peek())
@@ -57,7 +64,7 @@ print(myStack.pop())
 print(myStack.pop())
 print(myStack.pop())
 print(myStack.pop())
-print(myStack.getList())
+myStack.printStack()
 
 
 
