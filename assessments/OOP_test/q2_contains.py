@@ -6,7 +6,6 @@ def contains(s1,s2):
         substring = s2[i:(i+s1Length)]
         if substring == s1:
             return True
-    
     return False
 
-print(contains('this i s true','Did i say this is true     '))
+print(contains('fox','foxhound'))
