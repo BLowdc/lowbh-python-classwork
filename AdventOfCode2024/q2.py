@@ -69,7 +69,8 @@ for level in ls:
 #next level
 
 for level in ls2:
-    if errorCount1(level) or errorCount2(level):
+    s = list(set(level))
+    if errorCount1(s) or errorCount2(s):
         safe += 1
     #end if
 #next level
