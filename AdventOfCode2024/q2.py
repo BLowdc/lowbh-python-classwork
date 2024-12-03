@@ -25,6 +25,35 @@ def isDecreasing(list):
     return True
 #end function
 
+def errorCount1(list):
+    error = 0
+    for i in range(1,len(list)):
+        if (list[i] >= list[i-1]) or ((list[i-1] - list[i]) > 3):
+            error += 1
+        #end if
+    #next i
+    if error == 1:
+        return True
+    else:
+        return False
+    #end if
+#end function
+
+def errorCount2(list):
+    error = 0
+    for i in range(1,len(list)):
+        if (list[i] <= list[i-1]) or ((list[i] - list[i-1]) > 3):
+            error += 1
+        #end if
+    #next i
+    if error == 1:
+        return True
+    else:
+        return False
+    #end if
+#end function
+
+
 
 for line in f:
     a = [int(s) for s in line.strip().split()]
@@ -38,4 +67,11 @@ for level in ls:
         ls2.append(level)
     #end if   
 #next level
-print(ls2)
+
+for level in ls2:
+    if errorCount1(level) or errorCount2(level):
+        safe += 1
+    #end if
+#next level
+
+print(safe)
