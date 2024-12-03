@@ -53,8 +53,6 @@ def errorCount2(list):
     #end if
 #end function
 
-
-
 for line in f:
     a = [int(s) for s in line.strip().split()]
     ls.append(a)
@@ -63,16 +61,15 @@ for line in f:
 for level in ls:
     if isIncreasing(level) or isDecreasing(level):
         safe += 1
-    else:
-        ls2.append(level)
+    # else:
+    #     ls2.append(level)
     #end if   
 #next level
 
-for level in ls2:
-    s = list(set(level))
-    if errorCount1(s) or errorCount2(s):
-        safe += 1
-    #end if
-#next level
+# for level in ls2:
+#     if errorCount1(s) or errorCount2(s):
+#         safe += 1
+#     #end if
+# #next level
 
 print(safe)
