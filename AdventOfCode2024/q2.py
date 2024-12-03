@@ -1,5 +1,6 @@
-f = open("c:\AOC24/reports.txt","r")
+f = open("c:\\AOC24\\reports.txt","r")
 ls = []
+ls2 = []
 safe = 0
 
 def isIncreasing(list):
@@ -33,7 +34,8 @@ for line in f:
 for level in ls:
     if isIncreasing(level) or isDecreasing(level):
         safe += 1
-    #end if
+    else:
+        ls2.append(level)
+    #end if   
 #next level
-
-print(safe)
+print(ls2)
