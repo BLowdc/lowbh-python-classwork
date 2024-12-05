@@ -3,7 +3,7 @@ l1 = []
 l2 = []
 diff = 0
 sim = 0
-f = open("c:\list.txt","r")
+f = open("c:\\AOC24\\list.txt","r")
 for line in f:
     n1, n2 = (int(s) for s in line.strip().split())
     l1.append(n1)
