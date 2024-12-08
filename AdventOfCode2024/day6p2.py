@@ -1,52 +1,55 @@
-m = open("c:\\AOC24\\map.txt","r")
-map = []
-exited = False
-for line in m:
-    map.append(list(line.strip("\n")))
+from itertools import cycle
 
-# for i in range(len(map)):
-#     for j in range(len(map[i])):
-#         if map[i][j] == '^':
-#             print(i,j)
+def traverse_path(pos_x, pos_y, obstacles, bound):
+    visited = set()
+    visited.add((pos_x, pos_y))
 
-# my starting position: map[82][34]
+    dirs = cycle([(0, -1), (1, 0), (0, 1), (-1, 0)])
+    dir_x, dir_y = next(dirs)
+    
+    cache = set()
+    cache.add((pos_x, pos_y, dir_x, dir_y))
 
-dir = ['^','>','v','<']
+    while True:
+        new_x, new_y = pos_x + dir_x, pos_y + dir_y
 
-cur_pos = [82,34]
+        # If we hit an obstacle -> turn
+        if (new_x, new_y) in obstacles:
+            dir_x, dir_y = next(dirs)
 
-print(map)
+        # If we hit the border -> done
+        elif new_x < 0 or new_x >= bound or new_y < 0 or new_y >= bound:
+            return False, visited
 
-cur_dir = 0
-obs = 0
-
-while not exited:
-    row = cur_pos[0]
-    col = cur_pos[1]
-    if map[cur_pos[0]][cur_pos[1]] == dir[0]: #up
-        cur_pos[0] -= 1
-    elif map[cur_pos[0]][cur_pos[1]] == dir[1]: #right
-        cur_pos[1] += 1
-    elif map[cur_pos[0]][cur_pos[1]] == dir[2]: #down
-        cur_pos[0] += 1
-    elif map[cur_pos[0]][cur_pos[1]] == dir[3]: #left
-        cur_pos[1] -= 1
-    #end ifs
-
-    if (0 <= cur_pos[0] <= 129) and (0 <= cur_pos[1] <= 129):
-        if map[cur_pos[0]][cur_pos[1]] == '#':
-            cur_dir = (cur_dir + 1) % 4
-            map[row][col] = dir[cur_dir]
-            cur_pos = [row,col]
-        elif map[cur_pos[0]][cur_pos[1]] == 'X':
-            map[cur_pos[0]][cur_pos[1]] = dir[cur_dir]
-            map[row][col] = 'X'
-            obs += 1
+        # Else -> continue walking
         else:
-            map[cur_pos[0]][cur_pos[1]] = dir[cur_dir]
-            map[row][col] = 'X'
-        #end if
-    else:
-        exited = True
-    #end if
-#end while
+            pos_x, pos_y = new_x, new_y
+            visited.add((pos_x, pos_y))
+
+            # If we visit the same position in the same direction -> loop detected
+            c = (pos_x, pos_y, dir_x, dir_y)
+            if c in cache:
+                return True, visited
+            else:
+                cache.add((pos_x, pos_y, dir_x, dir_y))
+
+
+with open("c:\\AOC24\\map.txt","r") as f:
+    lines = [list(x.strip()) for x in f]
+bound = len(lines)
+
+obstacles = set()
+pos_x, pos_y = 0, 0
+for y, line in enumerate(lines):
+    for x, c in enumerate(line):
+        if c == "#": obstacles.add((x,y))
+        elif c == "^": pos_x, pos_y = x, y
+
+# Part 1
+_, visited = traverse_path(pos_x, pos_y, obstacles, bound)
+
+# Part 2
+# Check of position of new obstacle only on the traversed path of the guard
+candidates = visited - {(pos_x, pos_y)}
+
+print(sum(traverse_path(pos_x, pos_y, obstacles | {cand}, bound)[0] for cand in candidates))
