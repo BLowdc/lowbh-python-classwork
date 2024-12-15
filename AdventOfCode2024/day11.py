@@ -11,10 +11,10 @@ for blink in range(75):
         elif len(str(stones[i])) % 2 == 0:
             t = str(stones[i])
             l = len(t)
-            half1 = t[:l//2]
-            half2 = t[l//2:]
-            stones[i] = int(half1)
-            stones.insert(i+1, int(half2))
+            left = t[:l//2]
+            right = t[l//2:]
+            stones[i] = int(left)
+            stones.insert(i+1, int(right))
             i += 1
             lslen += 1
 
