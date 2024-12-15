@@ -1,7 +1,11 @@
-l = [[1,1],[2,2],[3,3],[4,4]]
-a = 100
-def add(num):
-    num = num - 1
-    return
+a = '1000'
+l = len(a)
+i = 0
+print(int(a[:l//2]))
+print(int(a[l//2:]))
+
+ls = [1,6,5,0,8,2]
+
+length = len(ls)
 
 
