@@ -39,9 +39,9 @@ class Cat(Animal):
 # print(f"Name: {myCat.name}, Type: {myCat.type}, Colour: {myCat.colour}")
 # myCat.makeNoise()
 
-pets = [None for i in range(10)]
+pets = [None for i in range(3)]
 
-for i in range(10):
+for i in range(3):
     choice = random.randint(0,1)
     match choice:
         case 0:
