@@ -1,5 +1,4 @@
-def findMaxPath(n) -> list:
-    tree = [0 if val == 'None' else int(val) for val in nodes]
+def findMaxPath(tree) -> list:
     max = 0
     for root in range(14,6,-1):
         path = []
@@ -20,11 +19,18 @@ def findMaxPath(n) -> list:
 #end function
 
 nodes = input().split()
-
-ans = findMaxPath(nodes)
+ns = []
+for elem in nodes:
+    try:
+        num = int(elem)
+        ns.append(num)
+    except:
+        ns.append(0)
+    #end try
+#next elem
+ans = findMaxPath(ns)
 for j in range(len(ans)-1,-1,-1):
     print(ans[j],end=" ")
 #next j
 print("")
 print(sum(ans))
-

@@ -4,9 +4,9 @@ def KE(m,v) -> float:
 def GPE(m,h) -> float:
     return m * 10 * h
 
-mass = int(input())
+mass = float(input())
 speed = int(input())
 height = int(input())
 
 me = KE(mass,speed) + GPE(mass,height)
-print(round(me,1))
+print(round(me, 1))
