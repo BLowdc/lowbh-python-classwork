@@ -1,22 +1,22 @@
 import quickSort
 
-txt = input()
+txt = """WINOK BVYBN NOBLI SWECD KNWSD DYCYW OMYXP ECSYX KPDOB BOKNS XQIYE BVODD OBKCS MKXXY DMVOK BVICO ORYGS WSQRD LOYPK XIKCC SCDKX MODYI YEZOB RKZCD RKDCR YGCKG KXDYP SWKQS XKDSY XYXWI ZKBDL EDSDB EVIPK SVDYC OORYG KXIDR SXQSM YEVNN YGYEV NRKFO DROVO KCDSX PVEOX MOEZY XDROQ BOKDK PPKSB CXYGC DSBBS XQKMB YCCDR OYMOK XIYEK BOAES DOBSQ RDDRK DGOCR KBOKN OOZNS CVSUO YPDRK DNBOK NPEVS XCDSD EDSYX CVKFO BIKXN SBOTY SMONK CIYEN SNKDD ROFSM DYBSO CYPWB VSXMY VXKXN DROXO GRYZO DROIL BSXQD YCYWK XIVYX QCEPP OBSXQ ZOYZV OIODS MKXXY DLOVS OFODR KDKXI DRSXQ SWSQR DGBSD OYBCK IMYEV NWYFO DROMY XQBOC CYBDR OZBOC SNOXD DYGKB NCKTE CDMYE BCOSP IYEBY GXOPP YBDCR KFOXY DKVBO KNIZO BCEKN ONDRO WXYXO DROVO CCWBL KLLKQ OSCWY CDSXC SCDOX DDRKD SCRYE VNROK BIYEB CMROW OKXNS GSVVL OSXVY XNYXX OHDGO OUPYB KWOOD SXQYP DROQR YCDMV ELSPI YEKBO GSVVS XQGOW SQRDW OODDR OBOYB SPIYE ZBOPO BKAES ODOBC ODDSX QKDDR OKDRO XOEWS BOWKS XWINO KBVYB NNOBL IFOBI DBEVI IYEBC MRKBV OCNSM UOXC"""
 table = {}
 order = []
 for char in txt:
     if char not in table:
-        if char == ' ':
-            table["SPACE"] = 1
-            order.append("SPACE")
-            continue
-        #end if
+        # if char == ' ':
+        #     table["SPACE"] = 1
+        #     order.append("SPACE")
+        #     continue
+        # #end if
         table[char] = 1
         order.append(char)
     else:
-        if char == ' ':
-            table["SPACE"] += 1
-            continue
-        #end if
+        # if char == ' ':
+        #     table["SPACE"] += 1
+        #     continue
+        # #end if
         table[char] += 1
     #endif
 #next char
@@ -25,3 +25,4 @@ for char in txt:
 
 for key in table:
     print(f"{key}: {table[key]} times")
+
