@@ -43,8 +43,6 @@ def findSum(list2D) -> int:
     
     return sum
 
-    
-
 dirs = {'^': [-1,0], '>': [0,1], 'v': [1,0], '<': [0,-1]}
 cur_pos = findPos(house)
 
@@ -69,14 +67,3 @@ for row in house:
     print(' '.join([str(elem) for elem in row]))
 
 print(findSum(house))
-
-
-
-
-
-        
-
-
-
-
-
