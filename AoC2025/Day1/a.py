@@ -5,14 +5,13 @@ for line in f:
 
 dial = 50
 password = 0
+
 for elem in rotations:
+    num = int(elem[1::])
     if elem[0] == "L":
-        num = int(elem[1::])
         dial = (dial - num) % 100
     else:
-        num = int(elem[1::])
         dial = (dial + num) % 100
-
     if dial == 0:
         password += 1
 
