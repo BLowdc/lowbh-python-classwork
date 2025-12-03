@@ -1,4 +1,2 @@
-s = "71027103"
-n = 2
-for i in range(4):
-    print(s[n * i : n * (i + 1)])
+queue = [1,4,2,3,7]
+print(queue.pop(0))
