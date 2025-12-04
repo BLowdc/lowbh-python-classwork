@@ -1,4 +1,4 @@
-f = open("C:\\AoC25\\day1.txt", "r")
+f = open("AoC2025\Day1\day1.txt", "r")
 rotations = []
 for line in f:
     rotations.append(line.strip("\n"))
