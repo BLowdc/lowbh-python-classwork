@@ -1,2 +1,3 @@
-ls=[]
-print(ls[-1])
+string = 'gaidw'
+for char in string:
+    print(char)

@@ -6,7 +6,6 @@ emptyLine = lines.index("")
 ranges = [list(line.split("-")) for line in lines[:emptyLine]]
 ranges = [list(map(int, r)) for r in ranges]
 
-
 def quick_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -17,7 +16,6 @@ def quick_sort(arr):
     right = [x for x in arr if x[0] > pivot]
 
     return quick_sort(left) + middle + quick_sort(right)
-
 
 ranges = quick_sort(ranges)
 merged_ranges = []
