@@ -54,5 +54,5 @@ def from_base10(num: str, base: int):
     return result
 
 
-print(to_base10("11111110", 2))
-print(from_base10("1901", 16))
+n = to_base10("7075", 8)
+print(from_base10(n, 2))

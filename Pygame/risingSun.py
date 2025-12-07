@@ -31,7 +31,7 @@ while not done:
 
     y = 0.0005 * ((x-500) ** 2) + 100
 
-    print(x,y)
+    # print(x,y)
 
     screen.fill(BLACK)
 

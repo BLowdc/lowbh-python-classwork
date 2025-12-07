@@ -46,4 +46,4 @@ def are_anagrams(s1: str, s2: str):
         return False
 
 
-print(are_anagrams("Racecar", "carrace"))
+print(are_anagrams("abacaba", "cabacac"))
