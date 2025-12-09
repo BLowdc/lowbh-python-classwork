@@ -1,3 +1,1 @@
-string = 'gaidw'
-for char in string:
-    print(char)
+print(max(1, 5, 23))
