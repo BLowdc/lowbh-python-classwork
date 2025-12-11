@@ -1,5 +1,3 @@
-import math
-
 boxes = []
 with open("AoC2025\\Day8\\test.txt", "r") as f:
     for line in f:
@@ -8,13 +6,13 @@ with open("AoC2025\\Day8\\test.txt", "r") as f:
         )
 
 connections = {}
-circuits = []
+cir = []
 unchecked = []
 count = 0
 
 for i in range(len(boxes)):
     for j in range(i + 1, len(boxes)):
-        distance = math.sqrt(
+        distance = (
             (boxes[i][0] - boxes[j][0]) ** 2
             + (boxes[i][1] - boxes[j][1]) ** 2
             + (boxes[i][2] - boxes[j][2]) ** 2
@@ -25,30 +23,35 @@ dists = list(connections.keys())
 dists.sort()
 # print(dists)
 connections = {i: connections[i] for i in dists}
-# print(connections)
 
-for k in connections:
-    unchecked.append((connections[k]))
-
-while unchecked:
-    c = 0
-    length = len(unchecked)
-    app = False
-    if circuits:
-        while c < length:
-            for r in circuits:
-                if unchecked[c][0] in r or unchecked[c][1] in r:
-                    r.add(unchecked[c][0])
-                    r.add(unchecked[c][1])
-                    unchecked.pop(c)
-                    c -= 1
-                    length -= 1
-                    app = True
+for c in connections.values():
+    added = False
+    merged = False
+    if cir:
+        length = len(cir)
+        # if length > 1:
+        for p in range(length):
+            for q in range(p + 1, length):
+                if (c[0] in cir[p] and c[1] in cir[q]) or (
+                    c[1] in cir[p] and c[0] in cir[q]
+                ):
+                    for r in cir[q]:
+                        cir[p].add(r)
+                    cir.pop(q)
+                    if len(cir) == 1:
+                        print(c)
+                    merged = True
                     break
-            c += 1
-
-    if not app:
-        circuits.append({unchecked[0][0], unchecked[0][1]})
-        unchecked.pop(0)
-
-print(circuits)
+            if merged:
+                break
+        if not merged:
+            for s in range(length):
+                if c[0] in cir[s] or c[1] in cir[s]:
+                    cir[s].add(c[0])
+                    cir[s].add(c[1])
+                    added = True
+                    break
+        if not added and not merged:
+            cir.append({c[0], c[1]})
+    else:
+        cir.append({c[0], c[1]})

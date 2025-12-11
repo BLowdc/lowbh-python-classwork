@@ -1,5 +1,3 @@
-import math
-
 boxes = []
 with open("AoC2025\\Day8\\input.txt", "r") as f:
     for line in f:
@@ -14,7 +12,7 @@ count = 0
 
 for i in range(len(boxes)):
     for j in range(i + 1, len(boxes)):
-        distance = math.sqrt(
+        distance = (
             (boxes[i][0] - boxes[j][0]) ** 2
             + (boxes[i][1] - boxes[j][1]) ** 2
             + (boxes[i][2] - boxes[j][2]) ** 2
