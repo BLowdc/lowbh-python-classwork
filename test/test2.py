@@ -1,3 +1,3 @@
-string = 'gaidw'
-for char in string:
-    print(char)
+ls = [1]
+ls.append(2, 5, 4)
+print(ls)
