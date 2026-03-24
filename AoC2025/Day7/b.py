@@ -19,7 +19,7 @@ def splits(map: list,pos: list,paths: dict) -> int:
             if (pos[0],pos[1]+1) not in paths:
                 paths[(pos[0],pos[1]+1)] = splits(map, [pos[0],pos[1]+1], paths)
             return paths[(pos[0],pos[1]-1)] + paths[(pos[0],pos[1]+1)]
-    
+
     return 1
 
 print(splits(manifold,[0,start], paths))
