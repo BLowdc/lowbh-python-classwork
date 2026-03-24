@@ -1,4 +1,4 @@
-def merge(arr1,arr2):
+def merge(arr1, arr2):
     arrNew = []
     while arr1 and arr2:
         if arr1[0] > arr2[0]:
@@ -16,11 +16,11 @@ def merge(arr1,arr2):
         arrNew += arr2
     # end if
     return arrNew
+
+
 # end function
 
-arr1 = [1,3,5,7,9]
-arr2 = [2,4,6,8,10]
+arr1 = [1, 3, 5, 7, 9]
+arr2 = [2, 4, 6, 8, 10]
 
-print(merge(arr1,arr2))
-
-    
+print(merge(arr1, arr2))

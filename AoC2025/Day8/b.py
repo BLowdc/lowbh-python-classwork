@@ -39,7 +39,7 @@ for c in connections.values():
                         cir[p].add(r)
                     cir.pop(q)
                     if len(cir) == 1:
-                        print(c)
+                        print(c[0][0] * c[1][0])
                     merged = True
                     break
             if merged:
